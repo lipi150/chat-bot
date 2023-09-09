@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        setLoading(false);
+        
         getUserOnLoad()
     }, []);
 
@@ -21,10 +21,12 @@ export const AuthProvider = ({ children }) => {
             const accountDetails = await account.get()
             console.log('accountDetails:' , accountDetails)
             setUser(accountDetails)
+            setLoading(false)
         } catch (error) {
             console.info(error)
+            setLoading(false)
         }
-        setLoading(false)
+        
     }
 
     const handleUserLogin = async (e, credentials) => {
