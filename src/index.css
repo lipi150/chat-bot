@@ -165,6 +165,7 @@ border-radius: 20px;
 width:fit-content;
 max-width: 100%;
 word-wrap: break-word; /* added */
+
 }
 
 .message--body--owner{
@@ -186,6 +187,18 @@ width: 16px;
 
 .delete--btn:hover{
 color:red;
+}
+.right{
+  display: flex;
+  justify-content: right;
+}
+.shift-right{
+  display: flex;
+  justify-content: left;
+}
+.other-user2{
+  background-color:rgb(131, 47, 75);
+  
 }
 
 

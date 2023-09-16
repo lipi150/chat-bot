@@ -1,3 +1,5 @@
+//useRef is used to (1)create a mutable variable which will not re render the componenets.
+//                  (2)to access a DOM element directly.                 
 import { createContext, useState, useEffect, useContext } from "react";
 import { account } from "../appwriteConfig";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +64,7 @@ export const AuthProvider = ({ children }) => {
                 )
                 await account.createEmailSession(credentials.email, credentials.password1)
                 const accountDetails = await account.get()
-                console.log('accountDetails:' , accountDetails)
+                // console.log('accountDetails:' , accountDetails)
                 setUser(accountDetails)
                 navigate('/')
 

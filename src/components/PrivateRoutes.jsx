@@ -12,3 +12,8 @@ const {user} = useAuth()
 }
 
 export default PrivateRoutes
+
+
+
+
+//Outlet component is used for rendering the child componenet of PrivateRoutes
