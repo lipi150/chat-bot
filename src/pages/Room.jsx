@@ -12,6 +12,7 @@ const Room = () => {
     const [messageBody, setMessageBody] = useState('')
 
     useEffect(() => {
+        getMessages()
         const unsubscribe = client.subscribe([`databases.${DATABASE_ID}.collections.${COLLECTION_ID_MESSAGES}.documents`], (response) => {
             // console.log(response);
 
@@ -25,6 +26,7 @@ const Room = () => {
         })
 
         return () => unsubscribe();
+        
     }, [])
 
     const handleSubmit = async (e) => {
@@ -61,7 +63,7 @@ const Room = () => {
                 Query.limit(5)
             ]
         )
-        //  console.log('RESPONSE:', response)
+         
         setMessages(response.documents)
     }
 
@@ -107,7 +109,7 @@ const Room = () => {
                 <div>
                     {messages.map(message => (
                         <div key={message.$id} className='message--wrapper'>
-                            <div className='message--header'>
+                            <div className={`message--header ${message.user_id === user.$id ? 'right' :''}`}>
                                 <p>
                                     {message?.username ? (
                                         <span>{message.username}</span>
@@ -134,10 +136,11 @@ const Room = () => {
                                 </div>
                             </div>
 
+                            {/* <div className='right'>
+                                  <div className='message--body'><span>{message.body}</span></div>
+                            </div> */}
 
-
-
-
+                        
                         </div>
 
                     ))}
